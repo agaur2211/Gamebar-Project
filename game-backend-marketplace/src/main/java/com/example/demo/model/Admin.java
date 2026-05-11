@@ -21,7 +21,6 @@ public class Admin {
 	private String password;
 	private boolean enabled = false;
 	
-	public Admin(){}
 
     public Admin(String email, String password) {
         this.email = email;
