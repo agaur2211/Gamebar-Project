@@ -19,7 +19,7 @@ function loginUser() {
     loginButton.innerText = "Logging in...";
     loginButton.disabled = true;
 
-    fetch("http://localhost:9000/users/login", {
+    fetch("https://gamebar-backend.onrender.com/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

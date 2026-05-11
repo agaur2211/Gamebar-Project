@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:9000";
+const API_BASE = "https://gamebar-backend.onrender.com"
 
 const adminForm = document.querySelector(".admin-form");
 const loginButton = document.querySelector(".admin-login-btn");

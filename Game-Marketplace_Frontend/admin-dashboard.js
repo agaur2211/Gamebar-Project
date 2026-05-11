@@ -1,5 +1,4 @@
-const API_BASE = "http://localhost:9000";
-
+const API_BASE = "https://gamebar-backend.onrender.com"
 const adminToken = localStorage.getItem("adminToken");
 
 const totalUsers = document.getElementById("totalUsers");
