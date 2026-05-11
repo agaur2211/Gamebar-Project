@@ -1,4 +1,4 @@
-const API_BASE = "https://gamebar-backend.onrender.com"
+const API_BASE = "gamebar-project-production.up.railway.app"
 const token = localStorage.getItem("userToken");
 
 const nameInput = document.getElementById("name");
