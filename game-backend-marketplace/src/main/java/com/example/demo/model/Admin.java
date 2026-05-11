@@ -20,7 +20,10 @@ public class Admin {
 	private String email;
 	private String password;
 	private boolean enabled = false;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> a6ea346890c7c08455896990389bafb5b54db919
 
     public Admin(String email, String password) {
         this.email = email;
