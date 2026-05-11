@@ -19,7 +19,7 @@ function loginUser() {
     loginButton.innerText = "Logging in...";
     loginButton.disabled = true;
 
-    fetch("https://gamebar-backend.onrender.com/users/login", {
+    fetch("gamebar-project-production.up.railway.app/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
