@@ -30,7 +30,7 @@ function registerUser() {
     registerButton.innerText = "Registering...";
     registerButton.disabled = true;
 
-    fetch("https://gamebar-backend.onrender.com/users/register", {
+    fetch("gamebar-project-production.up.railway.app/users/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
