@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Gamebar</title>
+
+    <link rel="stylesheet" href="/Styles/profileStyles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Michroma&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="/StaticSources/logo.png" alt="Gamebar Logo">
+        </div>
+
+        <nav class="navigationbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">All Games</a></li>
+                <li><a href="topcharts.html">Top Charts</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <section class="profile-section">
+
+            <div class="section-title">
+                <h1>Profile</h1>
+                <p>Manage your Gamebar account details and contact information.</p>
+            </div>
+
+            <div id="profileContainer" class="profile-container">
+
+                <div class="profile-card">
+
+                    <div class="profile-avatar">
+                        <span>GB</span>
+                    </div>
+
+                    <form class="profile-form">
+
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="Enter your name">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input id="whatsapp" type="text" placeholder="Enter WhatsApp number">
+                        </div>
+
+                        <button id="updateBtn" type="button">
+                            Update Profile
+                        </button>
+
+                        <!-- EXTRA PROFILE ACTIONS -->
+                        <div class="profile-extra-actions">
+
+                            <button type="button" id="addGameBtn" class="profile-action-btn">
+                                Add a Game
+                            </button>
+
+                            <button type="button" id="adminPortalBtn" class="profile-action-btn admin-btn">
+                                Are You an Admin?
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>Gamebar</h2>
+                <p>
+                    Enter the next level of gaming. Buy, explore, and discover your favorite games
+                    in one powerful marketplace.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">All Games</a></li>
+                    <li><a href="topcharts.html">Top Charts</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-support">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Connect</h3>
+
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                    <a href="#">X</a>
+                </div>
+
+                <p class="footer-tagline">Play hard. Trade smart.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            copyright &copy; Gamebar | All Rights Reserved
+        </div>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+
+</html>

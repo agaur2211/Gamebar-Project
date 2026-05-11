@@ -1,0 +1,772 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #050505;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid rgba(217, 148, 232, 0.6);
+    box-shadow: 0 0 28px rgba(217, 148, 232, 0.35);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 145px;
+    max-width: 100%;
+    filter: drop-shadow(0 0 14px rgba(255, 87, 87, 0.8));
+}
+
+.navigationbar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navigationbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    list-style: none;
+    padding: 15px 28px;
+    background: linear-gradient(135deg, rgba(217, 148, 232, 0.25), rgba(255, 87, 87, 0.18));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0 0 20px rgba(255, 255, 255, 0.08),
+        0 0 25px rgba(217, 148, 232, 0.25);
+}
+
+.navigationbar ul li {
+    list-style: none;
+}
+
+.navigationbar ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.navigationbar ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -7px;
+    background: #ff5757;
+    box-shadow: 0 0 10px #ff5757;
+    transition: 0.3s ease;
+}
+
+.navigationbar ul li a:hover {
+    color: #d994e8;
+    text-shadow: 0 0 12px #d994e8;
+}
+
+.navigationbar ul li a:hover::after {
+    width: 100%;
+}
+
+/* ================= BUTTON BASE ================= */
+
+#logoutBtn,
+#updateBtn,
+.profile-action-btn {
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+#logoutBtn::before,
+#updateBtn::before,
+.profile-action-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transition: 0.5s ease;
+}
+
+#logoutBtn:hover::before,
+#updateBtn:hover::before,
+.profile-action-btn:hover::before {
+    left: 120%;
+}
+
+/* ================= LOGOUT BUTTON ================= */
+
+#logoutBtn {
+    padding: 14px 24px;
+    font-size: 13px;
+    background: linear-gradient(135deg, #ff5757, #d9003d);
+    box-shadow: 0 0 22px rgba(255, 87, 87, 0.55);
+    flex-shrink: 0;
+}
+
+#logoutBtn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 87, 87, 0.8);
+}
+
+#logoutBtn:active {
+    transform: scale(0.97);
+}
+
+/* ================= MAIN ================= */
+
+main {
+    min-height: calc(100vh - 90px);
+    background-image:
+        radial-gradient(circle at 20% 15%, rgba(217, 148, 232, 0.24), transparent 30%),
+        radial-gradient(circle at 85% 45%, rgba(255, 87, 87, 0.2), transparent 32%),
+        radial-gradient(circle at 50% 90%, rgba(141, 60, 255, 0.18), transparent 35%),
+        linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.86)),
+        url("/StaticSources/1\,1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    padding: 85px 7% 95px;
+}
+
+/* ================= PROFILE SECTION ================= */
+
+.profile-section {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 55px 45px;
+    position: relative;
+
+    background: linear-gradient(135deg, rgba(18, 18, 28, 0.72), rgba(255, 255, 255, 0.08));
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 0 45px rgba(217, 148, 232, 0.4),
+        0 0 95px rgba(255, 87, 87, 0.2),
+        inset 0 0 40px rgba(255, 255, 255, 0.06);
+
+    overflow: hidden;
+}
+
+.profile-section::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: -100px;
+    right: -90px;
+    background: rgba(217, 148, 232, 0.3);
+    border-radius: 50%;
+    filter: blur(28px);
+    z-index: -1;
+}
+
+.profile-section::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    left: -80px;
+    background: rgba(255, 87, 87, 0.28);
+    border-radius: 50%;
+    filter: blur(28px);
+    z-index: -1;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h1 {
+    font-family: "Changa One", sans-serif;
+    font-size: clamp(48px, 7vw, 86px);
+    letter-spacing: 4px;
+    color: white;
+    margin-bottom: 12px;
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.7),
+        0 0 28px rgba(217, 148, 232, 0.95),
+        0 0 55px rgba(255, 87, 87, 0.7);
+}
+
+.section-title p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ================= PROFILE CONTAINER ================= */
+
+.profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 680px;
+    padding: 42px 38px;
+
+    background: linear-gradient(135deg, rgba(5, 8, 12, 0.82), rgba(255, 255, 255, 0.06));
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.55),
+        0 0 30px rgba(217, 148, 232, 0.18);
+}
+
+.profile-avatar {
+    width: 115px;
+    height: 115px;
+    margin: 0 auto 35px;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #d994e8, #8d3cff, #ff5757);
+    box-shadow:
+        0 0 25px rgba(217, 148, 232, 0.75),
+        0 0 45px rgba(255, 87, 87, 0.35);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-avatar span {
+    font-family: "Changa One", sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+}
+
+.profile-form {
+    width: 100%;
+}
+
+/* ================= INPUTS ================= */
+
+.input-group {
+    margin-bottom: 26px;
+}
+
+.input-group label {
+    display: block;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+#name,
+#email,
+#whatsapp {
+    width: 100%;
+    height: 60px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    outline: none;
+
+    background: rgba(5, 8, 12, 0.86);
+    color: white;
+
+    font-size: 14px;
+    padding: 0 18px;
+    border-radius: 8px;
+
+    box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.85),
+        0 0 18px rgba(217, 148, 232, 0.14);
+
+    transition: 0.3s ease;
+}
+
+#name::placeholder,
+#whatsapp::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#name:focus,
+#whatsapp:focus {
+    border-color: #d994e8;
+    box-shadow:
+        0 0 22px rgba(217, 148, 232, 0.7),
+        inset 0 0 18px rgba(0, 0, 0, 0.9);
+}
+
+#email:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background: rgba(20, 20, 24, 0.75);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* ================= UPDATE BUTTON ================= */
+
+#updateBtn {
+    width: 100%;
+    max-width: 380px;
+    height: 64px;
+    margin: 18px auto 0;
+    display: block;
+
+    font-size: 15px;
+    background: linear-gradient(135deg, #d994e8, #8d3cff);
+    box-shadow: 0 0 24px rgba(217, 148, 232, 0.6);
+}
+
+#updateBtn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 30px rgba(217, 148, 232, 0.8);
+}
+
+#updateBtn:active {
+    transform: scale(0.97);
+}
+
+/* ================= EXTRA PROFILE ACTIONS ================= */
+
+.profile-extra-actions {
+    width: 100%;
+    margin-top: 28px;
+    padding-top: 30px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.profile-action-btn {
+    width: 100%;
+    min-height: 60px;
+    padding: 0 18px;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    background: linear-gradient(135deg, #ff5757, #d9003d);
+    box-shadow: 0 0 22px rgba(255, 87, 87, 0.5);
+}
+
+.profile-action-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 87, 87, 0.75);
+}
+
+.profile-action-btn:active {
+    transform: scale(0.97);
+}
+
+.admin-btn {
+    background: linear-gradient(135deg, #141414, #4a0a20, #8d0032);
+    border: 1px solid rgba(255, 87, 87, 0.35);
+    box-shadow:
+        0 0 22px rgba(255, 87, 87, 0.45),
+        inset 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.admin-btn:hover {
+    box-shadow:
+        0 0 30px rgba(255, 87, 87, 0.8),
+        0 0 42px rgba(217, 148, 232, 0.24);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    width: 100%;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(217, 148, 232, 0.2), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(255, 87, 87, 0.2), transparent 28%),
+        linear-gradient(135deg, #050505, #120915, #050505);
+
+    color: white;
+    border-top: 2px solid rgba(217, 148, 232, 0.55);
+    box-shadow: 0 -12px 38px rgba(217, 148, 232, 0.25);
+}
+
+.footer-container {
+    width: 100%;
+    padding: 60px 7%;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 38px;
+}
+
+.footer-brand h2 {
+    font-family: "Changa One", sans-serif;
+    font-size: 48px;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow:
+        0 0 14px rgba(217, 148, 232, 0.95),
+        0 0 30px rgba(255, 87, 87, 0.55);
+    margin-bottom: 18px;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 420px;
+}
+
+.footer-links h3,
+.footer-support h3,
+.footer-social h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #d994e8;
+    text-shadow: 0 0 12px rgba(217, 148, 232, 0.75);
+}
+
+.footer-links ul,
+.footer-support ul {
+    list-style: none;
+}
+
+.footer-links ul li,
+.footer-support ul li {
+    margin-bottom: 14px;
+}
+
+.footer-links ul li a,
+.footer-support ul li a {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-support ul li a:hover {
+    color: #ff5757;
+    padding-left: 7px;
+    text-shadow: 0 0 12px rgba(255, 87, 87, 0.9);
+}
+
+.social-icons {
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, rgba(217, 148, 232, 0.38), rgba(255, 87, 87, 0.28));
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+
+    box-shadow: 0 0 17px rgba(217, 148, 232, 0.28);
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px) scale(1.08);
+    background: linear-gradient(135deg, #d994e8, #ff5757);
+    box-shadow: 0 0 25px rgba(255, 87, 87, 0.7);
+}
+
+.footer-tagline {
+    margin-top: 22px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 1px;
+}
+
+.footer-bottom {
+    padding: 20px 7%;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.75);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.65);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo img {
+        width: 130px;
+    }
+
+    .navigationbar {
+        order: 3;
+        width: 100%;
+    }
+
+    .navigationbar ul {
+        flex-wrap: wrap;
+    }
+
+    #logoutBtn {
+        order: 2;
+    }
+}
+
+@media (max-width: 900px) {
+
+    main {
+        padding: 70px 5% 80px;
+    }
+
+    .profile-section {
+        padding: 48px 32px;
+        border-radius: 28px;
+    }
+
+    .profile-card {
+        padding: 36px 30px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 6%;
+    }
+
+    .footer-brand h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    header {
+        min-height: auto;
+        padding: 15px;
+        gap: 16px;
+    }
+
+    .navigationbar ul {
+        width: 100%;
+        gap: 0;
+        justify-content: space-around;
+        padding: 13px 10px;
+        border-radius: 16px;
+        row-gap: 14px;
+    }
+
+    .navigationbar ul li a {
+        font-size: 11px;
+    }
+
+    #logoutBtn {
+        width: 100%;
+        max-width: 260px;
+        height: 50px;
+        font-size: 12px;
+    }
+
+    main {
+        min-height: auto;
+        background-attachment: scroll;
+        padding: 55px 15px 70px;
+    }
+
+    .profile-section {
+        padding: 42px 22px;
+        border-radius: 24px;
+    }
+
+    .section-title {
+        margin-bottom: 35px;
+    }
+
+    .section-title h1 {
+        letter-spacing: 2px;
+    }
+
+    .section-title p {
+        font-size: 13px;
+    }
+
+    .profile-card {
+        padding: 32px 22px;
+        border-radius: 22px;
+    }
+
+    .profile-avatar {
+        width: 95px;
+        height: 95px;
+        margin-bottom: 30px;
+    }
+
+    .profile-avatar span {
+        font-size: 32px;
+    }
+
+    .input-group label {
+        font-size: 15px;
+    }
+
+    #name,
+    #email,
+    #whatsapp {
+        height: 54px;
+        font-size: 13px;
+    }
+
+    #updateBtn {
+        max-width: 100%;
+        height: 56px;
+        font-size: 13px;
+    }
+
+    .profile-extra-actions {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .profile-action-btn {
+        min-height: 55px;
+        font-size: 12px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 45px 25px;
+        gap: 34px;
+    }
+
+    .footer-brand h2 {
+        font-size: 38px;
+    }
+
+    .footer-brand p {
+        margin: 0 auto;
+        font-size: 12px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-links ul li a:hover,
+    .footer-support ul li a:hover {
+        padding-left: 0;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+        line-height: 1.7;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .logo img {
+        width: 115px;
+    }
+
+    .navigationbar ul {
+        flex-direction: column;
+        gap: 13px;
+        border-radius: 18px;
+    }
+
+    .navigationbar ul li a {
+        font-size: 12px;
+    }
+
+    .profile-section {
+        padding: 36px 18px;
+    }
+
+    .section-title h1 {
+        font-size: 42px;
+    }
+
+    .profile-card {
+        padding: 28px 18px;
+    }
+
+    .footer-brand h2 {
+        font-size: 34px;
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Gamebar</title>
+
+    <link rel="stylesheet" href="/Styles/admindashboardStyles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Michroma&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="admin-main">
+
+        <section class="admin-dashboard">
+
+            <div class="dashboard-top">
+
+                <div class="admin-title">
+                    <span class="admin-badge">ADMIN PANEL</span>
+                    <h1>Dashboard</h1>
+                    <p>Monitor users, games, listings, and marketplace activity.</p>
+                </div>
+
+                <button id="logoutBtn">Logout</button>
+
+            </div>
+
+            <div class="stats-wrapper">
+
+                <div class="stat-card">
+                    <span>Total Users</span>
+                    <div id="totalUsers">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <span>Total Games</span>
+                    <div id="totalGames">0</div>
+                </div>
+
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-panel">
+                    <div class="panel-heading">
+                        <h2>Users</h2>
+                        <p>Registered users will appear here.</p>
+                    </div>
+
+                    <div id="usersContainer" class="admin-list-container">
+                        <!-- Dynamic users will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="dashboard-panel">
+                    <div class="panel-heading">
+                        <h2>Games</h2>
+                        <p>Listed games will appear here.</p>
+                    </div>
+
+                    <div id="gamesContainer" class="admin-list-container">
+                        <!-- Dynamic games will be inserted here -->
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+
+</html>

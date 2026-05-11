@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Game | Gamebar</title>
+
+    <link rel="stylesheet" href="/Styles/addgameStyles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Michroma&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/StaticSources/logo.png" alt="Gamebar Logo">
+        </div>
+
+        <nav class="navigationbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">All Games</a></li>
+                <li><a href="topcharts.html">Top Charts</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <main>
+
+        <section class="add-game-section">
+
+            <div class="section-title">
+                <h1>Seller Dashboard</h1>
+                <p>Add new games and manage your uploaded listings.</p>
+            </div>
+
+            <div class="add-game-layout">
+
+                <div class="seller-info-card">
+                    <div class="seller-icon">+</div>
+
+                    <h2>Sell Your Game</h2>
+                    <p>
+                        Add game details carefully. A clean title, strong description,
+                        fair price, and good image can attract more buyers.
+                    </p>
+
+                    <div class="tips-box">
+                        <span>Quick Tips</span>
+                        <ul>
+                            <li>Use a clear game title</li>
+                            <li>Write a useful description</li>
+                            <li>Upload a good quality image</li>
+                            <li>Keep your price realistic</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="add-game-card">
+
+                    <form class="add-game-form">
+
+                        <input type="hidden" id="editGameId">
+
+                        <div class="input-group">
+                            <label for="title">Game Title</label>
+                            <input id="title" type="text" placeholder="Enter game title">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="Write something about the game..."></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="price">Price</label>
+                            <input id="price" type="number" placeholder="Enter price">
+                        </div>
+
+                        <div class="input-group file-group">
+                            <label for="image">Game Image</label>
+                            <input id="image" type="file">
+                        </div>
+
+                        <button id="addGameBtn" type="button">Add Game</button>
+                        <button id="cancelEditBtn" type="button" style="display:none;">Cancel Edit</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="my-uploaded-games-section">
+
+            <div class="section-title">
+                <h1>My Uploaded Games</h1>
+                <p>Manage the games you have listed on Gamebar.</p>
+            </div>
+
+            <div id="myUploadedGamesContainer" class="my-uploaded-games-container">
+                <!-- JS will load uploaded games here -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>Gamebar</h2>
+                <p>
+                    Enter the next level of gaming. Buy, explore, and discover your favorite games
+                    in one powerful marketplace.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">All Games</a></li>
+                    <li><a href="topcharts.html">Top Charts</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-support">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Connect</h3>
+
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                    <a href="#">X</a>
+                </div>
+
+                <p class="footer-tagline">Play hard. Trade smart.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            copyright &copy; Gamebar | All Rights Reserved
+        </div>
+    </footer>
+
+    <script src="addgame.js"></script>
+</body>
+
+</html>
