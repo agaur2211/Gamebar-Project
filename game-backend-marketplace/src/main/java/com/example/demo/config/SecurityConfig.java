@@ -85,6 +85,14 @@ public class SecurityConfig {
                 .requestMatchers("/games/add").hasRole("USER")
                 .requestMatchers("/games/upload/**").hasRole("USER")
                 .requestMatchers("/games/**").permitAll()
+                                    .requestMatchers(
+                "/users/register",
+                "/users/login",
+                "/admin/login",
+                "/admin/create"
+            ).permitAll()
+            .anyRequest().authenticated()
+                                   
 
                 // Everything else requires authentication
                 .anyRequest().authenticated()
