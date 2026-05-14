@@ -17,6 +17,7 @@ import com.example.demo.dto.userProfileUpdateRequest;
 import com.example.demo.dto.userprofileResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import java.util.Map;
 
 @RestController
 @RequestMapping ("/users")
@@ -26,9 +27,17 @@ public class UserController {
 	private UserService userservice;
 	
 	@PostMapping("/register")
-	public String register(@RequestBody User user) {
-	    return userservice.register(user);
-	}
+public String register(@RequestBody Map<String, Object> body) {
+
+    User user = new User();
+
+    user.setName(String.valueOf(body.get("name")));
+    user.setEmail(String.valueOf(body.get("email")));
+    user.setPassword(String.valueOf(body.get("password")));
+    user.setWhatsappNumber(String.valueOf(body.get("whatsappNumber")));
+
+    return userservice.register(user);
+}
 	@PostMapping("/login")
     public String login(@RequestBody User user) {
         return userservice.loginUser(user);
