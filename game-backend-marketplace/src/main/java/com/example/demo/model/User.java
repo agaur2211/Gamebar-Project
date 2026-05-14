@@ -24,7 +24,7 @@ public class User {
 
     
 
-	public long getWhatsappNumber() {
+	public String getWhatsappNumber() {
 		return whatsappNumber;
 	}
 	public void setWhatsappNumber(String whatsappNumber) {
