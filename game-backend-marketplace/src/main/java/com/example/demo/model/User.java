@@ -19,7 +19,7 @@ public class User {
     private String email;
     private String password;
 	private boolean banned = false;
-	private long whatsappNumber;
+	private String whatsappNumber;
 
 
     
@@ -27,7 +27,7 @@ public class User {
 	public long getWhatsappNumber() {
 		return whatsappNumber;
 	}
-	public void setWhatsappNumber(long whatsappNumber) {
+	public void setWhatsappNumber(String whatsappNumber) {
 		this.whatsappNumber = whatsappNumber;
 	}
 	public Long getId() {
