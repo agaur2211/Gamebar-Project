@@ -5,13 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.dto.MyGameResponse;
 import com.example.demo.dto.userProfileUpdateRequest;
@@ -27,11 +21,15 @@ public class UserController {
     @Autowired
     private UserService userservice;
 
+    @GetMapping("/test")
+    public String test() {
+        return "User controller is working";
+    }
+
     @PostMapping("/register")
     public String register(@RequestBody Map<String, Object> body) {
 
         User user = new User();
-
         user.setName(String.valueOf(body.get("name")));
         user.setEmail(String.valueOf(body.get("email")));
         user.setPassword(String.valueOf(body.get("password")));
@@ -44,7 +42,6 @@ public class UserController {
     public String login(@RequestBody Map<String, Object> body) {
 
         User user = new User();
-
         user.setEmail(String.valueOf(body.get("email")));
         user.setPassword(String.valueOf(body.get("password")));
 
@@ -54,10 +51,7 @@ public class UserController {
     @GetMapping("/profile")
     public userprofileResponse getProfile() {
 
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         return userservice.getProfile(email);
     }
@@ -65,21 +59,15 @@ public class UserController {
     @PutMapping("/profile")
     public String updateProfile(@RequestBody userProfileUpdateRequest request) {
 
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         return userservice.updateProfile(email, request);
     }
 
     @PutMapping("/update")
-    public String updateProfile(@RequestBody User updatedUser) {
+    public String updateUser(@RequestBody User updatedUser) {
 
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         return userservice.updateProfile(email, updatedUser);
     }
@@ -87,10 +75,7 @@ public class UserController {
     @GetMapping("/my-games")
     public List<MyGameResponse> getMyGames() {
 
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         return userservice.getMyGames(email);
     }
