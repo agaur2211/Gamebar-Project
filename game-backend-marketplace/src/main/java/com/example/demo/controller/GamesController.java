@@ -3,105 +3,94 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.example.demo.config.SecurityConfig;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.demo.model.Games;
 import com.example.demo.service.GamesService;
 
 @RestController
 @RequestMapping("/games")
+@CrossOrigin(origins = "*")
 public class GamesController {
 
-    private final SecurityConfig securityConfig;
-@Autowired
-private GamesService gameservice;
+    @Autowired
+    private GamesService gameservice;
 
-    GamesController(SecurityConfig securityConfig) {
-        this.securityConfig = securityConfig;
+    @GetMapping("/test")
+    public String test() {
+        return "Games controller is working";
     }
 
-@PostMapping("/add")
-public Games addGame(@RequestBody Games game) {
+    @PostMapping("/add")
+    public Games addGame(@RequestBody Games game) {
 
-	org.springframework.security.core.@Nullable Authentication auth = 
-			SecurityContextHolder.getContext().getAuthentication();
+        String email = getLoggedInEmail();
 
-    String email = auth.getName();
+        game.setSellerEmail(email);
 
-    System.out.println("Controller Email: " + email);
+        return gameservice.addGame(game);
+    }
 
-    game.setSellerEmail(email);
+    @GetMapping("/all")
+    public List<Map<String, Object>> getAllGames() {
+        return gameservice.getAllGames();
+    }
 
-    return gameservice.addGame(game);
-}
+    @PostMapping(value = "/upload/{id}", consumes = "multipart/form-data")
+    public String uploadImage(@PathVariable Long id,
+                              @RequestParam("file") MultipartFile file) {
 
+        return gameservice.uploadImage(id, file);
+    }
 
-@GetMapping("/all")
-public List<Map<String, Object>> getAllGames() {
-    return gameservice.getAllGames();
-}
+    @GetMapping("/search")
+    public List<Games> searchGames(@RequestParam String title) {
+        return gameservice.searchGames(title);
+    }
 
-@PostMapping(value = "/upload/{id}", consumes = "multipart/form-data")
-public String uploadImage(@PathVariable Long id,
-                         @RequestParam("file") MultipartFile file) {
+    @GetMapping("/filter")
+    public List<Games> filterGames(@RequestParam double minPrice,
+                                   @RequestParam double maxPrice) {
 
-    System.out.println("File received: " + file);
-    return gameservice.uploadImage(id, file);
-}
+        return gameservice.filterGames(minPrice, maxPrice);
+    }
 
-@GetMapping("/search")
-public List<Games> searchGames(@RequestParam String title) {
-    return gameservice.searchGames(title);
-}
+    @PutMapping("/update/{gameId}")
+    public String updateGame(@PathVariable Long gameId,
+                             @RequestBody Games updatedGame) {
 
-@GetMapping("/filter")
-public List<Games> filterGames(
-        @RequestParam double minPrice,
-        @RequestParam double maxPrice) {
+        String email = getLoggedInEmail();
 
-    return gameservice.filterGames(minPrice, maxPrice);
-}
+        return gameservice.updateGame(gameId, updatedGame, email);
+    }
 
-@PutMapping("/update/{gameId}")
-public String updateGame(@PathVariable Long gameId,
-                         @RequestBody Games updatedGame) {
+    @DeleteMapping("/delete/{gameId}")
+    public String deleteGame(@PathVariable Long gameId) {
 
-    String email = SecurityContextHolder
-            .getContext()
-            .getAuthentication()
-            .getName();
+        String email = getLoggedInEmail();
 
-    return gameservice.updateGame(gameId, updatedGame, email);
-}
+        return gameservice.deleteGame(gameId, email);
+    }
 
-@DeleteMapping("/delete/{gameId}")
-public String deleteGame(@PathVariable Long gameId) {
+    @GetMapping
+    public List<Games> getSortedGames(@RequestParam(defaultValue = "price") String sort,
+                                      @RequestParam(defaultValue = "asc") String direction) {
 
-    String email = SecurityContextHolder
-            .getContext()
-            .getAuthentication()
-            .getName();
+        return gameservice.sortGames(sort, direction);
+    }
 
-    return gameservice.deleteGame(gameId, email);
-}
+    private String getLoggedInEmail() {
 
-@GetMapping
-public List<Games> getSortedGames(
-        @RequestParam(defaultValue = "price") String sort,
-        @RequestParam(defaultValue = "asc") String direction) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-    return gameservice.sortGames(sort, direction);
-}
+        if (auth == null || auth.getName() == null) {
+            throw new RuntimeException("User not authenticated");
+        }
+
+        return auth.getName();
+    }
 }
