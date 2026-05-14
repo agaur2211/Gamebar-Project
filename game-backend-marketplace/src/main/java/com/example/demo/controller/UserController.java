@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,75 +18,80 @@ import com.example.demo.dto.userProfileUpdateRequest;
 import com.example.demo.dto.userprofileResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import java.util.Map;
 
 @RestController
-@RequestMapping ("/users")
-@CrossOrigin
+@RequestMapping("/users")
+@CrossOrigin(origins = "*")
 public class UserController {
-	@Autowired 
-	private UserService userservice;
-	
-	@PostMapping("/register")
-public String register(@RequestBody Map<String, Object> body) {
 
-    User user = new User();
+    @Autowired
+    private UserService userservice;
 
-    user.setName(String.valueOf(body.get("name")));
-    user.setEmail(String.valueOf(body.get("email")));
-    user.setPassword(String.valueOf(body.get("password")));
-    user.setWhatsappNumber(String.valueOf(body.get("whatsappNumber")));
+    @PostMapping("/register")
+    public String register(@RequestBody Map<String, Object> body) {
 
-    return userservice.register(user);
-}
-	@PostMapping("/login")
-    public String login(@RequestBody User user) {
+        User user = new User();
+
+        user.setName(String.valueOf(body.get("name")));
+        user.setEmail(String.valueOf(body.get("email")));
+        user.setPassword(String.valueOf(body.get("password")));
+        user.setWhatsappNumber(String.valueOf(body.get("whatsappNumber")));
+
+        return userservice.register(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Map<String, Object> body) {
+
+        User user = new User();
+
+        user.setEmail(String.valueOf(body.get("email")));
+        user.setPassword(String.valueOf(body.get("password")));
+
         return userservice.loginUser(user);
     }
-	
-	// 👤 GET PROFILE
-	@GetMapping("/profile")
-	public userprofileResponse getProfile() {
 
-	    String email = SecurityContextHolder
-	                        .getContext()
-	                        .getAuthentication()
-	                        .getName();
+    @GetMapping("/profile")
+    public userprofileResponse getProfile() {
 
-	    return userservice.getProfile(email);
-	}
+        String email = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
 
-    // ✏️ UPDATE PROFILE
-	@PutMapping("/profile")
-	public String updateProfile(@RequestBody userProfileUpdateRequest  request) {
+        return userservice.getProfile(email);
+    }
 
-	    String email = SecurityContextHolder
-	                        .getContext()
-	                        .getAuthentication()
-	                        .getName();
+    @PutMapping("/profile")
+    public String updateProfile(@RequestBody userProfileUpdateRequest request) {
 
-	    return userservice.updateProfile(email, request);
-	}
-	
-	@PutMapping("/update")
-	public String updateProfile(@RequestBody User updatedUser) {
+        String email = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
 
-	    String email = SecurityContextHolder
-	            .getContext()
-	            .getAuthentication()
-	            .getName();
+        return userservice.updateProfile(email, request);
+    }
 
-	    return userservice.updateProfile(email, updatedUser);
-	}
-	
-	@GetMapping("/my-games")
-	public List<MyGameResponse> getMyGames() {
+    @PutMapping("/update")
+    public String updateProfile(@RequestBody User updatedUser) {
 
-	    String email = SecurityContextHolder
-	            .getContext()
-	            .getAuthentication()
-	            .getName();
+        String email = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
 
-	    return userservice.getMyGames(email);
-	}
+        return userservice.updateProfile(email, updatedUser);
+    }
+
+    @GetMapping("/my-games")
+    public List<MyGameResponse> getMyGames() {
+
+        String email = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        return userservice.getMyGames(email);
+    }
 }
